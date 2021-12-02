@@ -57,7 +57,7 @@ export type ScrollableProps<T> =
 //#region FlatList
 export type BottomSheetFlatListProps<T> = Omit<
   Animated.AnimateProps<FlatListProps<T>>,
-  'decelerationRate' | 'onScroll' | 'scrollEventThrottle'
+  'decelerationRate' | 'scrollEventThrottle'
 > &
   BottomSheetScrollableProps & {
     ref?: Ref<BottomSheetFlatListMethods>;
@@ -135,7 +135,7 @@ export interface BottomSheetFlatListMethods {
 //#region ScrollView
 export type BottomSheetScrollViewProps = Omit<
   Animated.AnimateProps<ScrollViewProps>,
-  'decelerationRate' | 'onScroll' | 'scrollEventThrottle'
+  'decelerationRate' | 'scrollEventThrottle'
 > &
   BottomSheetScrollableProps & {
     ref?: Ref<BottomSheetScrollViewMethods>;
@@ -200,7 +200,7 @@ export interface BottomSheetScrollViewMethods {
 //#region SectionList
 type BottomSheetSectionListProps<ItemT, SectionT> = Omit<
   Animated.AnimateProps<SectionListProps<ItemT, SectionT>>,
-  'decelerationRate' | 'onScroll' | 'scrollEventThrottle'
+  'decelerationRate' | 'scrollEventThrottle'
 > &
   BottomSheetScrollableProps & {
     ref?: Ref<BottomSheetSectionListMethods>;
@@ -243,7 +243,7 @@ export interface BottomSheetSectionListMethods {
 //#region
 export type BottomSheetVirtualizedListProps<T> = Omit<
   Animated.AnimateProps<VirtualizedListProps<T>>,
-  'decelerationRate' | 'onScroll' | 'scrollEventThrottle'
+  'decelerationRate' | 'scrollEventThrottle'
 > &
   BottomSheetScrollableProps & {
     ref?: Ref<BottomSheetVirtualizedListMethods>;

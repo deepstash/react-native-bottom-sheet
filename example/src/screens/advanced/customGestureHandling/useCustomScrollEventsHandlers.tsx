@@ -10,6 +10,7 @@ import {
   ScrollEventsHandlersHookType,
 } from '@gorhom/bottom-sheet';
 import { useGestureTranslationY } from './GestureTranslationContext';
+import { NativeScrollEvent } from 'react-native';
 
 type ScrollEventContextType = {
   initialContentOffsetY: number;
@@ -48,7 +49,8 @@ function getScrollMetadata({
 
 export const useCustomScrollEventsHandlers: ScrollEventsHandlersHookType = (
   scrollableRef,
-  scrollableContentOffsetY: Animated.SharedValue<number>
+  scrollableContentOffsetY: Animated.SharedValue<number>,
+  onScroll?: (event: NativeScrollEvent) => void
 ) => {
   // hooks
   const {
@@ -74,7 +76,9 @@ export const useCustomScrollEventsHandlers: ScrollEventsHandlersHookType = (
     );
   const handleOnScroll: ScrollEventHandlerCallbackType<ScrollEventContextType> =
     useWorkletCallback(
-      (_, context) => {
+      (event, context) => {
+        onScroll?.(event);
+
         const {
           didDragBelowSecondSnapPoint,
           isDraggingDownFromMiddle,

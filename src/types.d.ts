@@ -151,7 +151,8 @@ type ScrollEventHandlerCallbackType<C = any> = (
 
 export type ScrollEventsHandlersHookType = (
   ref: React.RefObject<Scrollable>,
-  contentOffsetY: Animated.SharedValue<number>
+  contentOffsetY: Animated.SharedValue<number>,
+  onScroll?: (event: NativeScrollEvent) => void
 ) => {
   handleOnScroll?: ScrollEventHandlerCallbackType;
   handleOnBeginDrag?: ScrollEventHandlerCallbackType;

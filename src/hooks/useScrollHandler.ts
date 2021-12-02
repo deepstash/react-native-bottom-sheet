@@ -6,9 +6,11 @@ import {
 import { useScrollEventsHandlersDefault } from './useScrollEventsHandlersDefault';
 import { workletNoop as noop } from '../utilities';
 import type { Scrollable } from '../types';
+import { NativeScrollEvent } from 'react-native';
 
 export const useScrollHandler = (
-  useScrollEventsHandlers = useScrollEventsHandlersDefault
+  useScrollEventsHandlers = useScrollEventsHandlersDefault,
+  onScroll?: (event: NativeScrollEvent) => void
 ) => {
   // refs
   const scrollableRef = useAnimatedRef<Scrollable>();
@@ -23,7 +25,11 @@ export const useScrollHandler = (
     handleOnEndDrag = noop,
     handleOnMomentumEnd = noop,
     handleOnMomentumBegin = noop,
-  } = useScrollEventsHandlers(scrollableRef, scrollableContentOffsetY);
+  } = useScrollEventsHandlers(
+    scrollableRef,
+    scrollableContentOffsetY,
+    onScroll
+  );
 
   // callbacks
   const scrollHandler = useAnimatedScrollHandler(
